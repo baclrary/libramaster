@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+        <div class="bg-white shadow-lg rounded-xl">
+            <div class="flex items-center justify-between px-6 py-3">
+                <h2 class="text-lg font-medium text-gray-800">List of Users</h2>
+                <div class="flex items-center space-x-2">
+                    <form method="GET" class="flex items-center">
+                        <input type="text" name="q" placeholder="Search by everything"
+                               class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
+                               value="{{ request.GET.q }}">
+                        <button type="submit"
+                                class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First
+                            name
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Middle name
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Last name
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Email
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Created at
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Role
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Is active
+                        </th>
+                        <th scope="col" class="relative px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for user in users|dictsort:"id" %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.id }}</td>
+                            {% if user.first_name %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.first_name }}</td>
+                            {% else %}
+                               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+                            {% if user.middle_name %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.middle_name }}</td>
+                            {% else %}
+                               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+                            {% if user.last_name %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.last_name }}</td>
+                            {% else %}
+                               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.email }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.created_at }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.get_role_display }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.is_active }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="{{ user.id }}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" colspan="6">No
+                                books available.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

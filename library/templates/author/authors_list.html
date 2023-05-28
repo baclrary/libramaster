@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+        <div class="bg-white shadow-lg rounded-xl">
+            <div class="flex items-center justify-between px-6 py-3">
+                <h2 class="text-lg font-medium text-gray-800">List of Authors</h2>
+                <div class="flex items-center space-x-2">
+                    <form method="GET" class="flex items-center">
+                        <input type="text" name="q" placeholder="Search by everything"
+                               class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
+                               value="{{ request.GET.q }}">
+                        <button type="submit"
+                                class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                            Search
+                        </button>
+                    </form>
+                    {% if request.user.role == 1 %}
+                    <a href="create"
+                       class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Add
+                        Author</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Patronymic
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Surname
+                        </th>
+
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Books
+                        </th>
+                        <th scope="col" class="relative px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for author in authors|dictsort:"id" %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ author.id }}</td>
+                            {% if author.name %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ author.name }}</td>
+                            {% else %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+                            {% if author.patronymic %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ author.patronymic }}</td>
+                            {% else %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+                            {% if author.surname %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ author.surname }}</td>
+                            {% else %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+
+                            {% if author.books.all.count > 0 %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-500 hover:text-indigo-600"><a
+                                        href="{% url "author:author-detail" author.pk %}">{{ author.books.all.count }}</a>
+                                </td>
+                            {% else %}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">–</td>
+                            {% endif %}
+
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="{{ author.id }}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" colspan="6">No
+                                author available.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

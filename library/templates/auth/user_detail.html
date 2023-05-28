@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bg-indigo-50">
+        <div class="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container">
+            <div class="bg-white shadow-lg rounded lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="md:w-3/5 w-full px-4">
+                        <h1 class="text-2xl font-bold">{{ user.first_name }} {{ user.last_name }}</h1>
+                        <p class="text-sm font-medium text-gray-500 mt-2">User ID: {{ user.id }}</p>
+                        <hr class="mt-3 mb-4"/>
+                        {% if user.first_name %}
+
+                            <p class="text-sm font-medium text-gray-500 mt-2">First name: <span
+                                    class="text-lg text-gray-900 dark:text-white"
+                                    style="padding: 30px">{{ user.first_name }}</span></p>
+                            <hr class="mt-3 mb-4"/>
+                        {% endif %}
+                        {% if user.middle_name %}
+                            <p class="text-sm font-medium text-gray-500 mt-2">Middle name: <span
+                                    class="text-lg text-gray-900 dark:text-white"
+                                    style="padding: 30px">{{ user.middle_name }}</span></p>
+                            <hr class="mt-3 mb-4"/>
+                        {% endif %}
+                        {% if user.last_name %}
+                            <p class="text-sm font-medium text-gray-500 mt-2">Last name: <span
+                                    class="text-lg text-gray-900 dark:text-white"
+                                    style="padding: 30px">{{ user.last_name }}</span></p>
+                            <hr class="mt-3 mb-4"/>
+                        {% endif %}
+                        <p class="text-sm font-medium text-gray-500 mt-2">Email: <span
+                                class="text-lg text-gray-900 dark:text-white"
+                                style="padding: 30px">{{ user.email }}</span></p>
+                        <hr class="mt-3 mb-4"/>
+                        <p class="text-sm font-medium text-gray-500 mt-2">Created at: <span
+                                class="text-lg text-gray-900 dark:text-white"
+                                style="padding: 30px">{{ user.created_at }}</span></p>
+                        <hr class="mt-3 mb-4"/>
+                        <p class="text-sm font-medium text-gray-500 mt-2">Role: <span
+                                class="text-lg text-gray-900 dark:text-white"
+                                style="padding: 30px">{{ user.get_role_display }}</span>
+                        </p>
+                        <hr class="mt-3 mb-4"/>
+                        <p class="text-sm font-medium text-gray-500 mt-2">Is active: <span
+                                class="text-lg text-gray-900 dark:text-white"
+                                style="padding: 30px">{{ user.is_active }}</span></p>
+                        <hr class="mt-4 mb-4"/>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mr-5">
+                    <a href="{% url 'users' %}"
+                       class="ml-3 px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                        Go Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

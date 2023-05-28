@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bg-indigo-50">
+        <div class="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container">
+            <div class="bg-white shadow-lg rounded lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+                <div class="flex flex-col md:flex-row justify-between">
+                    {% if book.cover_image %}
+                        <div class="md:w-2/5 w-full mr-10">
+                            <img class="w-full" src="{{ book.cover_image.url }}" alt="{{ book.name }} book cover"/>
+                        </div>
+                    {% endif %}
+                    <div class="md:w-3/5 w-full px-4">
+                        <h1 class="text-2xl font-bold">{{ book.name }}</h1>
+                        <p class="text-sm font-medium text-gray-500 mt-2">Book ID: {{ book.id }}</p>
+                        <hr class="mt-3 mb-4"/>
+                        <p class="text-lg">{{ book.description }}</p>
+                        <hr class="mt-4 mb-4"/>
+                        <p class="text-md font-medium text-gray-500">Available copies: {{ book.count }}</p>
+                        <hr class="mt-4 mb-4"/>
+                        {% if book.authors.count %}
+                            <p class="text-md font-medium text-gray-500">Authors:
+                                {% for author in book.authors.all %}
+
+                                    {% if book.authors.count > 1 %}
+                                        <a href="{% url "author:author-detail" author.pk %}"
+                                           class="text-indigo-500 hover:text-indigo-600">{{ author.get_full_name }}</a>
+
+                                    {% elif book.authors.count == 1 %}
+                                        <a href="{% url "author:author-detail" author.pk %}"
+                                           class="text-indigo-500 hover:text-indigo-600">{{ author.get_full_name }}</a>
+                                    {% endif %}
+
+                                    {% if not forloop.last %}, {% endif %}
+
+                                {% endfor %}
+                                {% else %}
+                            <p class="text-md font-medium text-gray-500">No Authors
+
+                        {% endif %}
+
+                        </p>
+                    </div>
+                </div>
+                <div class="flex justify-end mr-5">
+                    {% if request.user.is_authenticated and request.user.role == 0 %}
+                        {% if book.count > 1 %}
+                            <form method="POST">
+                                {% csrf_token %}
+                                <button name="order_book" type="submit"
+                                        class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                                    Order Book
+                                </button>
+                            </form>
+
+                        {% else %}
+                            <div
+                                    class="px-4 py-2 bg-gray-400 text-white font-medium rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+                                Too few books in stock
+                            </div>
+                        {% endif %}
+
+                    {% elif request.user.role == 0 %}
+                        <a href="{% url 'authentication:login' %}"
+                           class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                            Log in to order
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'books:books' %}"
+                       class="ml-3 px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                        Go Back
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

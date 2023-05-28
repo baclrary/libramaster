@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="bg-indigo-50">
+        <div class="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container md:flex items-center justify-center">
+            <div class="bg-white shadow-lg rounded xl:w-1/3 lg:w-5/12 md:w-1/2 w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+                <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 mb-10">Add
+                    new
+                    book</p>
+{#                <form method="POST" class="space-y-4" enctype="multipart/form-data">#}
+{#                    {% csrf_token %}#}
+{#                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">#}
+{#                        <label for="name" class="block text-sm font-medium text-gray-700">Title</label>#}
+{#                        <input type="text" name="name" id="name" placeholder="Enter book name" required#}
+{#                               class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md">#}
+{##}
+{#                        <label for="author_ids" class="block text-sm font-medium text-gray-700">Author(s)</label>#}
+{#                        <input type="text" name="author_ids" id="author_ids" placeholder="Enter author's id" required#}
+{#                               class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md">#}
+{##}
+{##}
+{#                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>#}
+{#                        <textarea name="description" id="description" rows="3" placeholder="Enter book description"#}
+{#                                  required#}
+{#                                  class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>#}
+{##}
+{##}
+{#                        <label for="count" class="block text-sm font-medium text-gray-700">Count</label>#}
+{#                        <input type="number" name="count" id="count" placeholder="Enter book count" required#}
+{#                               class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md">#}
+{#                        <label for="file-input" class="block text-sm font-medium text-gray-700">Cover</label>#}
+{##}
+{#                        <input type="file" name="file-input" id="file-input" class="mb-4 block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400#}
+{#                        file:bg-transparent file:border-0#}
+{#                        file:bg-gray-100 file:mr-4#}
+{#                        file:py-3 file:px-4#}
+{#                        dark:file:bg-gray-700 dark:file:text-gray-400">#}
+{##}
+{#                    </div>#}
+{#                    <div class="flex justify-center">#}
+{#                        <button type="submit"#}
+{#                                class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">#}
+{#                            Add Book#}
+{#                        </button>#}
+{#                    </div>#}
+{#                </form>#}
+                <form method="POST" class="space-y-4" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        {{ form }}
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                                class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                            Add Book
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

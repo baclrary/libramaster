@@ -1,0 +1,374 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {#    <h1>Hope page {{ user.email }}</h1>#}
+    {#    <h2><a href="{% url 'authentication:login' %}">Login</a></h2>#}
+    {#    <h2><a href="{% url 'authentication:register' %}">Register</a></h2>#}
+    {#    {% if request.user.is_authenticated %}#}
+    {#        <h2><a href="{% url 'authentication:logout' %}">Logout</a></h2>#}
+    {#    {% endif %}#}
+    <div class="bg-white dark:bg-transparent">
+        <div class="container mx-auto flex flex-col items-center py-12 sm:py-24">
+            <div class="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800 dark:text-white font-black leading-7 md:leading-10">
+                    The Freedom to Manage your
+                    <span class="text-indigo-700">Library</span>
+                    {#                    You Want#}
+                </h1>
+                <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-center text-sm sm:text-lg">Introducing
+                    LibraMaster: Revolutionize Your Library Experience</p>
+            </div>
+            <div class="flex justify-center items-center">
+                <a href="{% url "authentication:register" %}" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">
+                    Get Started
+                </a>
+            </div>
+        </div>
+
+        <!-- component -->
+        <div class="py-16 bg-white">
+            <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+                <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+                    <div class="md:5/12 lg:w-5/12">
+                        <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149331949.jpg?w=2000&t=st=1682111434~exp=1682112034~hmac=db83fe94dd41cce68ba9019bb4aa6ff0ed4d5e5f1363ecd91993f924897f9206" alt="image"
+                             loading="lazy" width="" height="">
+                    </div>
+                    <div class="md:7/12 lg:w-6/12">
+                        <h2 class="text-2xl text-gray-900 font-bold md:text-4xl"><span
+                                class="text-indigo-700">What</span> is LibraMaster?</h2>
+                        <p class="mt-6 text-gray-600">Are you looking for an efficient and user-friendly software to
+                            manage your library? Look no further! We're proud to present LibraMaster, the ultimate
+                            library management software that brings a whole new level of organization and ease to your
+                            library operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bg-white 2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
+
+            <div class="flex lg:flex-row flex-col lg:gap-8 sm:gap-10 gap-12">
+                <div class="w-full lg:w-6/12">
+                    <h2 class="w-full font-bold lg:text-4xl text-3xl lg:leading-10 dark:text-white leading-9"><span
+                            class="text-indigo-700">For</span> what?</h2>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6">Libraries have long
+                        been vital institutions for the preservation, organization, and dissemination of human
+                        knowledge. In today's fast-paced digital age, libraries need to evolve and adapt to meet the
+                        changing demands of patrons and the increasingly complex world of information management. That's
+                        where LibraMaster comes in.</p>
+
+                </div>
+                <div class="w-full lg:w-6/12">
+                    <img class="lg:block hidden w-full" src="https://img.freepik.com/free-vector/people-library-flat-vector-illustration_74855-6607.jpg?w=2000&t=st=1682106357~exp=1682106957~hmac=64eea4b84c3ebdc210d3fce89eeab0853a2d0c5461a5c29bfdcdd92cfb940019"
+                         alt="people discussing on board"/>
+                    <img class="lg:hidden sm:block hidden w-full" src="https://img.freepik.com/free-vector/people-library-flat-vector-illustration_74855-6607.jpg?w=2000&t=st=1682106357~exp=1682106957~hmac=64eea4b84c3ebdc210d3fce89eeab0853a2d0c5461a5c29bfdcdd92cfb940019"
+                         alt="people discussing on board"/>
+                    <img class="sm:hidden block w-full" src="https://img.freepik.com/free-vector/people-library-flat-vector-illustration_74855-6607.jpg?w=2000&t=st=1682106357~exp=1682106957~hmac=64eea4b84c3ebdc210d3fce89eeab0853a2d0c5461a5c29bfdcdd92cfb940019"
+                         alt="people discussing on board"/>
+                </div>
+            </div>
+
+            <div class="py-16 bg-white">
+
+
+                <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6 mt-40">
+                    <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+                        <div class="md:5/12 lg:w-5/12">
+                            <img src="https://img.freepik.com/free-vector/female-student-listening-webinar-online_74855-6461.jpg?w=2000&t=st=1682110931~exp=1682111531~hmac=5c616c0be6c15448a3db1a23d89dc4163d228d2b248d2a48282595cbc053d3ac"
+                                 alt="image" loading="lazy" width="" height="">
+
+                        </div>
+                        <div class="md:7/12 lg:w-6/12">
+                            <h2 class="text-2xl text-gray-900 font-bold md:text-4xl"><span
+                                    class="text-indigo-700">Why</span> LibraMaster?</h2>
+                            <p class="mt-6 text-gray-600">
+                                Choose LibraMaster for a comprehensive library management solution that seamlessly
+                                integrates all aspects of library operations, from catalog management and circulation to
+                                analytics and reporting.
+                            <p class="mt-6 text-gray-600">
+                                Our user-friendly interface ensures ease of use for both
+                                library staff and patrons, while our customizable and scalable software accommodates
+                                libraries of all sizes and types. LibraMaster's secure, cloud-based technology provides
+                                easy access, real-time updates, and data protection.
+                            </p>
+
+                            <p class="mt-6 text-gray-600">Our exceptional customer support,
+                                commitment to continuous improvement, and reputation as a trusted choice for libraries
+                                worldwide make LibraMaster the perfect partner to help you unlock your library's full
+                                potential and usher it into the future.
+                            </p>
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sm:hidden block relative mt-5">
+                <div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg3.svg" alt="user"/>
+                </div>
+                <hr class="z-10 absolute top-2/4 w-full bg-gray-200"/>
+            </div>
+            <div class="sm:hidden grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+                <div>
+                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white mt-6">
+                        400k User</p>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6">It is a long
+                        established fact that a reader will be distracted by the readable content of a page when looking
+                        at its layout.</p>
+                </div>
+            </div>
+
+            <div class="flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16">
+                <div class="mt-10 w-full lg:w-6/12">
+                    <h2 class="font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 dark:text-white">Our
+                        Mission</h2>
+
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 w-full lg:w-10/12 xl:w-9/12 mt-10">
+                        We at LibraMaster are also dedicated to cultivating a culture of continuous learning and
+                        improvement within our organization. By staying attuned to the needs and aspirations of
+                        libraries and their patrons, we endeavor to develop features and solutions that align
+                        with their evolving requirements.
+
+                    </p>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 w-full lg:w-10/12 xl:w-9/12 mt-10">
+                        To achieve this, we actively engage with library professionals and users through
+                        conferences, workshops, and user feedback channels, ensuring that our software remains
+                        relevant and responsive to their needs. We are also committed to partnering with
+                        industry leaders, educational institutions, and technology providers to explore new
+                        avenues for collaboration and innovation in library management.
+
+                    </p>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 w-full lg:w-10/12 xl:w-9/12 mt-10">
+                        By fostering an inclusive and forward-thinking environment, we aim to inspire our team
+                        and our clients to embrace change and pursue excellence. Together, we can shape the
+                        future of libraries and contribute to a world where access to knowledge and resources is
+                        both equitable and empowering for all.
+                    </p>
+
+
+                </div>
+                <div class="mt-10 w-full lg:w-6/12">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10">
+                        <!-- Team Card -->
+                        <div class="flex p-4 shadow-md">
+                            <div class="icon-wrapper mr-6" style="width: 70px; height: 70px;">
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg4.svg"
+                                     alt="team card"/>
+                            </div>
+                            <div class="">
+                                <p class="text-indigo-600 font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white">
+                                    Team</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200">
+                                    Comprised of passionate library professionals, software engineers, and user
+                                    experience experts, our team works tirelessly to develop and support innovative,
+                                    user-friendly, and cost-effective library management solutions that align with our
+                                    mission.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Board Card -->
+                        <div class="flex p-4 shadow-md">
+                            <div class="icon-wrapper mr-6" style="width: 70px; height: 70px;">
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg5.svg"
+                                     alt="board card"/>
+                            </div>
+                            <div class="">
+                                <p class="text-indigo-600 font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white">
+                                    Advisory</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200">
+                                    Our distinguished advisory board, consisting of industry leaders and experienced
+                                    library professionals, offers valuable guidance and insights to ensure LibraMaster
+                                    remains at the forefront of innovation and stays true to its mission of empowering
+                                    libraries worldwide.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Press Card -->
+                        <div class="flex p-4 shadow-md">
+                            <div class="icon-wrapper mr-6" style="width: 70px; height: 70px;">
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg6.svg"
+                                     alt="press card"/>
+                            </div>
+                            <div class="">
+                                <p class="text-indigo-600 font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white">
+                                    Media</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200">
+                                    Discover how LibraMaster's commitment to revolutionizing library management is
+                                    making a difference in the library community. Stay up-to-date with our latest
+                                    achievements, partnerships, and contributions to a brighter, more informed, and
+                                    connected world.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="max-w-8xl mx-auto container bg-white dark:bg-gray-900 pt-16">
+            <div>
+                <div role="contentinfo" class="flex items-center flex-col px-4">
+                    <p tabindex="0"
+                       class="focus:outline-none uppercase text-sm text-center text-gray-600 dark:text-gray-200 leading-4">
+                        take a look at</p>
+                    <hh1 tabindex="0"
+                         class="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 dark:text-white lg:w-5/12 md:w-9/12 pt-4">
+                        LibraMaster <span class="text-indigo-700">Features</span>
+                    </hh1>
+                </div>
+                <div tabindex="0" aria-label="group of cards"
+                     class="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4">
+                    <div tabindex="0" aria-label="card 1" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+{#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG1.svg"#}
+{#                                     alt="drawer">#}
+                                1
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-bold leading-tight text-gray-800 dark:text-white">
+                                User-Friendly Interface</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                LibraMaster offers a seamless experience for patrons and staff alike. Designed with
+                                simplicity in mind, it ensures effortless navigation through features and services. The
+                                intuitive layout, clear visual cues, and user-friendly design guide users of all skill
+                                levels, minimizing confusion and maximizing efficiency, ultimately enhancing the overall
+                                library experience.
+                            </p>
+                        </div>
+                    </div>
+                    <div tabindex="0" aria-label="card 2" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+{#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG2.svg"#}
+{#                                     alt="check">#}
+                                2
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-semibold leading-tight text-gray-800 dark:text-white">
+                                Book Reservation Feature</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                Allows patrons to effortlessly reserve books online. Users can browse the library's
+                                collection, check availability, and place reservations directly from their account.
+                                Library staff is notified to set aside reserved items, while patrons receive
+                                notifications when their books are ready for pickup. </p>
+                        </div>
+                    </div>
+                    <div tabindex="0" aria-label="card 3" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+{#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG3.svg"#}
+{#                                     alt="html tag">#}
+                                3
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-semibold leading-tight text-gray-800 dark:text-white">
+                                Domain white list</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                LibraMaster's registration process includes a domain whitelist check to prevent users
+                                with temporary or disposable email addresses from accessing our platform. This ensures a
+                                secure and trustworthy environment by deterring spam, fraud, and misuse, allowing us to
+                                focus on providing a high-quality experience for genuine patrons and library staff.</p>
+                        </div>
+                    </div>
+                    <div tabindex="0" aria-label="card 4" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+{#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG4.svg"#}
+{#                                     alt="monitor">#}
+                                4
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-semibold leading-tight text-gray-800 dark:text-white">
+                                Adaptive search</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                We offer a simple yet effective adaptive search feature, allowing users to search across
+                                multiple fields simultaneously. This ensures a more comprehensive search experience,
+                                enabling patrons and staff to quickly locate the desired resources. The straightforward
+                                approach saves time and enhances the overall library experience for all users.
+                            </p>
+                        </div>
+                    </div>
+                    <div tabindex="0" aria-label="card 4" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+{#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG4.svg"#}
+{#                                     alt="monitor">#}
+                                5
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-semibold leading-tight text-gray-800 dark:text-white">
+                                Manage Orders</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                Our site offers a streamlined and user-friendly ordering process for guests. With our
+                                easy-to-use interface, guests can quickly place orders and make modifications as needed.
+                                Our intuitive platform ensures that managing guest orders is hassle-free, saving you
+                                time and increasing customer satisfaction.
+                            </p>
+                        </div>
+                    </div>
+                    <div tabindex="0" aria-label="card 4" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
+                        <div class="w-20 h-20 relative mr-5">
+                            <div class="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1"></div>
+                            <div class="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                                {#                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG4.svg"#}
+                                {#                                     alt="monitor">#}
+                                6
+                            </div>
+                        </div>
+                        <div class="w-10/12">
+                            <h2 tabindex="0"
+                                class="focus:outline-none text-lg font-semibold leading-tight text-gray-800 dark:text-white">
+                                Track Everything</h2>
+                            <p tabindex="0"
+                               class="focus:outline-none text-base text-gray-600 dark:text-gray-200 leading-normal pt-2">
+                                With LibraMaster, you can easily track and manage all aspects of your library, including
+                                orders, guests, books and authors. Say goodbye to disorganized records and hello to
+                                streamlined, efficient operations. Try it out today and see the difference it can make
+                                for your business.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

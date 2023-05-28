@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+{% include 'navbar.html' %}
+{% include 'messages.html' %}
+
+<body class="flex flex-col min-h-screen bg-indigo-50">
+    {% block content %}
+    {% endblock content %}
+    {% include 'footer.html' %}
+</body>
+
+
+<script> {# Hide messages after 5 sec script #}
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            const messages = document.querySelectorAll('[role="alert"]');
+            messages.forEach(function (message) {
+                message.style.display = 'none';
+            });
+        }, 5000);
+    });
+</script>
+
+</html>

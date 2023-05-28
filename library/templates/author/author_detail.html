@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="bg-indigo-50">
+    <div class="xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9 2xl:mx-auto 2xl:container">
+      <div class="bg-white shadow-lg rounded lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+        <div class="flex flex-col md:flex-row justify-between">
+          <div class="md:w-3/5 w-full px-4">
+            <h1 class="text-2xl font-bold">{{ author.name }} {{ author.surname }}</h1>
+            <p class="text-sm font-medium text-gray-500 mt-2">Author ID: {{ author.id }}</p>
+            <hr class="mt-3 mb-4"/>
+            <p class="text-sm font-medium text-gray-500 mt-2">Name: <span
+                class="text-lg text-gray-900 dark:text-white" style="padding: 30px">{{ author.name }}</span></p>
+            <hr class="mt-3 mb-4"/>
+            <p class="text-sm font-medium text-gray-500 mt-2">Surname: <span
+                class="text-lg text-gray-900 dark:text-white" style="padding: 30px">{{ author.surname }}</span></p>
+            <hr class="mt-3 mb-4"/>
+            {% if author.patronymic %}
+            <p class="text-sm font-medium text-gray-500 mt-2">Patronymic: <span
+                class="text-lg text-gray-900 dark:text-white" style="padding: 30px">{{ author.patronymic }}</span></p>
+            <hr class="mt-4 mb-4"/>
+            {% endif %}
+          </div>
+        </div>
+        <div class="flex justify-end mr-5">
+            {% if request.user.role == 1 %}
+          <a href="{% url "author:author-delete" author.pk %}"
+             class="ml-3 px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+            Delete
+          </a>
+            {% endif %}
+          <a href="{% url 'author:authors' %}"
+             class="ml-3 px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+            Go Back
+          </a>
+        </div>
+      </div>
+      <div class="2xl:container 2xl:mx-auto xl:px-20 md:px-10 sm:px-6 px-4 md:py-12 py-9">
+        <h1 class="text-2xl font-extrabold leading-6 text-gray-800 mb-6">Author's books</h1>
+
+        <div class="flex items-center mb-4">
+            <div class="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+              <div class="bg-white shadow-lg rounded-xl">
+                <div class="flex items-center justify-between px-6 py-3">
+                  <h2 class="text-lg font-medium text-gray-800">Books of {{ author.name }} {{ author.surname }}</h2>
+                  <div class="flex items-center space-x-2">
+                    <form method="GET" class="flex items-center">
+                      <input type="text" name="book_name" placeholder="Search book by name"
+                             class="py-2 px-4 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
+                             value="{{ request.GET.book_name }}">
+                      <button type="submit"
+                              class="px-4 py-2 bg-indigo-700 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">
+                        Search
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="overflow-x-auto mt-4">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Id
+                      </th>
+                      <th scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Title
+                      </th>
+                      <th scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Description
+                      </th>
+                      <th scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Count
+                      </th>
+                      <th scope="col" class="relative px-6 py-3">
+                        <span class="sr-only">Edit</span>
+                      </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for book in author_book|dictsort:"id" %}
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ book.id }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {{ book.name|truncatechars:20 }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {{ book.description|truncatechars:20 }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ book.count }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <a href="{% url 'books:book-detail' book.pk %}"
+                             class="text-indigo-600 hover:text-indigo-900">View</a>
+                        </td>
+                      </tr>
+                      {% empty %}
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                            colspan="6">No
+                          books available.
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

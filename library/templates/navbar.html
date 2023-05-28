@@ -1,0 +1,83 @@
+<div class=" bg-white dark:bg-gray-800 ">
+    <nav class="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+        <!-- For large and Medium-sized Screen -->
+        <div class="flex justify-between ">
+
+            <a href="{% url 'home' %}">
+                <div class=" flex space-x-3 items-center">
+                    <img class="p-1 dark:bg-white rounded-full" style="width: 42px; height: 42px;"
+                         src="https://img.icons8.com/external-others-inmotus-design/512/external-S-alphabet-others-inmotus-design-7.png" alt="circle"/>
+                    <h1 class=" font-normal text-2xl leading-6 text-gray-800 dark:text-white ">Softserve Academy</h1>
+                </div>
+            </a>
+            {% if user.is_authenticated %}
+            <div class="hidden sm:flex flex-row items-center space-x-6">
+                <a href="{% url "users" %}">
+                    <img class="dark:bg-white  p-1 rounded  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
+                         src="https://img.icons8.com/ios/512/user--v1.png" alt="twitter"
+                         style="width: 32px; height: 32px;"/>
+                </a>
+                <a href="{% url "books:books" %}">
+                    <img class="dark:bg-white  p-1 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
+                         src="https://img.icons8.com/external-those-icons-lineal-those-icons/512/external-Books-school-and-education-those-icons-lineal-those-icons.png"
+                         alt="facebook" style="width: 32px; height: 32px;"/>
+                </a>
+                <a href="{% url "author:authors" %}">
+                    <img class="dark:bg-white  p-1 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
+                         src="https://img.icons8.com/external-others-phat-plus/512/external-author-skills-outline-others-phat-plus.png"
+                         alt="linkdin" style="width: 32px; height: 32px;"/>
+                </a>
+                <a href="{% url "orders:orders" %}">
+                    <img class="dark:bg-white  p-1 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
+                         src="https://img.icons8.com/ios/512/order-history.png" alt="instagram"
+                         style="width: 32px; height: 32px;"/>
+                </a>
+            </div>
+            {% endif %}
+
+            <div class="hidden sm:flex flex-row space-x-4">
+                {% if user.is_authenticated %}
+                    <span class="mr-10 rounded-md flex space-x-2 text-sm leading-3 text-indigo-700 bg-white focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">{{ user.email }}</span>
+                    <a href="{% url 'authentication:logout' %}"
+                       class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">Logout</a>
+                {% else %}
+                    <a href="{% url 'authentication:login' %}"
+                       class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">Login</a>
+                    <a href="{% url 'authentication:register' %}"
+                       class="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-indigo-700 bg-white border border-indigo-700 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">Register</a>
+                {% endif %}
+            </div>
+
+            <!-- Burger Icon -->
+            <div id="bgIcon" onclick="toggleMenu()"
+                 class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  flex justify-center items-center sm:hidden cursor-pointer">
+                <img class="dark:bg-white" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg6.svg"
+                     alt="burger"/>
+                <img class="dark:bg-white hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg7.svg"
+                     alt="cross"/>
+            </div>
+        </div>
+
+        <!-- Mobile and small-screen devices (toggle Menu) -->
+        <div id="MobileNavigation" class="hidden sm:hidden mt-4 mx-auto">
+            <div class="flex flex-row items-center justify-center space-x-6">
+                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg1.svg" alt="twitter"/>
+                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg2.svg" alt="facebook"/>
+                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg3.svg" alt="linkdin"/>
+                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-3-svg4.svg" alt="instagram"/>
+            </div>
+            <div class="flex flex-col gap-4 mt-4 w-80 mx-auto ">
+                {% if user.is_authenticated %}
+                    <span class="text-gray-300 text-sm mr-4">{{ user.email }}</span>
+                    <a href="{% url 'authentication:logout' %}"
+                       class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Logout</a>
+                {% else %}
+                    <a href="{% url 'authentication:login' %}"
+                       class="rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">Login</a>
+                    <a href="{% url 'authentication:register' %}"
+                       class="rounded-md flex space-x-2 w-full h-10 font-normal text-sm leading-3 text-indigo-700 bg-indigo-600 bg-opacity-0 hover:opacity-100 duration-100 border border-indigo-700 focus:outline-none focus:bg-gray-200 hover:bg-gray-200 duration-150 justify-center items-center">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</div>
